@@ -24,8 +24,10 @@ def binary_assert(
     name=None,
 ):
     # Type checks
-    if not isinstance(x, torch.Tensor) or not isinstance(y, torch.Tensor):
-        raise TypeError(f"x and y must be torch.Tensor, got {type(x)} and {type(y)}")
+    if not isinstance(x, torch.Tensor):
+        x = torch.tensor(x)
+    if not isinstance(y, torch.Tensor):
+        y = torch.tensor(y)
 
     x_static = get_static_value(x)
     y_static = get_static_value(y)
